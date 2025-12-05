@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :cheques
-  resources :borderos
-    
-  get "up" => "rails/health#show", as: :rails_health_check
+  post "borderos" => "borderos#create", as: :create_bordero
+  post "borderos/calculate" => "borderos#calculate", as: :calculate_bordero
 
+  get "up" => "rails/health#show", as: :rails_health_check
 end
