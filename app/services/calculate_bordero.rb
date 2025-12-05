@@ -9,7 +9,8 @@ class CalculateBordero
         valor_cheque: cheque[:valor_cheque],
         data_vencimento: cheque[:data_vencimento],
         dias_compensacao: cheque[:dias_compensacao],
-        data_troca: @bordero_data[:data_troca]
+        data_troca: @bordero_data[:data_troca],
+        juros_mensal: @bordero_data[:juros_mensal]
       ).to_h
     end
 
