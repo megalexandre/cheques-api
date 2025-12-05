@@ -8,7 +8,7 @@ class ChequesController < ApplicationController
     render json: @cheques
   end
 
-  # GET /cheques/1
+  # GET /cheques/:id
   def show
     render json: @cheque
   end
@@ -46,6 +46,6 @@ class ChequesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cheque_params
-      params.fetch(:cheque, {})
+      params.require(:cheque).permit(:bordero_id, :holder, :valor_cheque, :data_vencimento, :bank, :numero_agencia, :numero_cheque, :dias_compensacao)
     end
 end

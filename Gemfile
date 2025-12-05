@@ -47,4 +47,18 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # RSpec for testing
+  gem "rspec-rails", "~> 7.1"
+  gem "factory_bot_rails"
+  gem "faker"
+  
+  # Cucumber for BDD
+  gem "cucumber-rails", require: false
+  gem "capybara"
+end
+
+group :test do
+  gem "shoulda-matchers", "~> 6.0"
+  gem "database_cleaner-active_record"
 end
