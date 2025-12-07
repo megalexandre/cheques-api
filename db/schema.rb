@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_06_164438) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_07_185127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
+
+  create_table "bank_holidays", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.date "date"
+    t.datetime "updated_at", null: false
+  end
 
   create_table "borderos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -31,6 +37,12 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_06_164438) do
     t.decimal "valor_cheque", precision: 10, scale: 2, null: false
     t.integer "valor_cheque_cents"
     t.index ["bordero_id"], name: "index_cheques_on_bordero_id"
+  end
+
+  create_table "holidays", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.date "date"
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "cheques", "borderos"

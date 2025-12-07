@@ -10,3 +10,13 @@ en:
         value: "Value"
         due_date: "Due date"
         processing_days: "Processing days"
+    errors:
+      models:
+        bordero_preview_form:
+          attributes:
+            exchange_date:
+              must_be_in_the_future: "must be in the future"
+        bordero_preview_form/cheque_form:
+          attributes:
+            due_date:
+              must_be_in_the_future: "must be in the future"

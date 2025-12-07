@@ -68,6 +68,15 @@ pt-BR:
         less_than: "deve ser menor que %{count}"
         less_than_or_equal_to: "deve ser menor ou igual a %{count}"
         not_a_number: "não é um número"
+      models:
+        bordero_preview_form:
+          attributes:
+            exchange_date:
+              must_be_in_the_future: "deve ser futura"
+        bordero_preview_form/cheque_form:
+          attributes:
+            due_date:
+              must_be_in_the_future: "deve ser futura"
     attributes:
       bordero_preview_form:
         exchange_date: "Data de desconto"

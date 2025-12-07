@@ -1,6 +1,9 @@
 # language: pt
 
 Funcionalidade: Borderô
+
+  Contexto:
+    Dado que a data atual é "2025-11-26 12:00:00"
   
   Cenário: Calcular um borderô com um data de vencimento inválida no cheque
     Quando eu enviar um POST para "/borderos/preview" com o JSON:
@@ -224,16 +227,15 @@ Funcionalidade: Borderô
     """
     Então a resposta deve ser 400
     E a resposta JSON deve conter:
-    """
-    {
-      "errors": [
-        "Cheque 1: Value can't be blank",
-        "Cheque 1: Value is not a number"
-      ]
-    }
-    """
-
-
+      """
+      {
+        "errors": [
+          "Cheque 1: Value can't be blank",
+          "Cheque 1: Value is not a number",
+          "Cheque 1: Due date is not a valid date"
+        ]
+      }
+      """
    Cenário: Calcular um borderô com o cheque sem data de vencimento
 
     Quando eu enviar um POST para "/borderos/preview" com o JSON:

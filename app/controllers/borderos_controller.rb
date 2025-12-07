@@ -4,7 +4,7 @@ class BorderosController < ApplicationController
     bordero_preview_form = BorderoPreviewForm.new(params)
 
     if bordero_preview_form.valid?
-      render json: bordero_preview_form.to_h, status: :ok
+      render json: CalculateBordero.new(bordero_preview_form.to_h).call, status: :ok
     else
       render json: { errors: bordero_preview_form.errors.full_messages }, status: :bad_request
     end
