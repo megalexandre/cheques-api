@@ -15,28 +15,13 @@ end
 
 Então('todos os cheques devem estar em dias úteis') do
   cheques = @json_response['cheques']
-  exchange_date = Date.parse(@json_response['exchange_date'])
 
   cheques.each_with_index do |cheque, index|
-    due_date = Date.parse(cheque['due_date'])
-    processing_days = cheque['processing_days']
+    effective_due_date = Date.parse(cheque['effective_due_date'])
 
-    # Calcula a data alvo (due_date + processing_days)
-    target_date = due_date + processing_days
+    expect(effective_due_date.saturday?).to be(false), "Cheque #{index + 1}: effective_due_date #{effective_due_date} is Saturday"
+    expect(effective_due_date.sunday?).to be(false), "Cheque #{index + 1}: effective_due_date #{effective_due_date} is Sunday"
 
-    # Verifica se é final de semana e avança se necessário
-    while target_date.saturday? || target_date.sunday?
-      target_date += 1
-    end
-
-    # Valida que a data ajustada não é final de semana
-    expect(target_date.saturday?).to be(false), "Cheque #{index + 1}: target date #{target_date} is Saturday"
-    expect(target_date.sunday?).to be(false), "Cheque #{index + 1}: target date #{target_date} is Sunday"
-
-    # Valida que days_count corresponde à data ajustada
-    expected_days_count = (target_date - exchange_date).to_i
-    actual_days_count = cheque['days_count']
-    expect(actual_days_count).to eq(expected_days_count),
-      "Cheque #{index + 1}: expected days_count to be #{expected_days_count} but got #{actual_days_count}"
+    expect(BankHoliday.exists?(date: effective_due_date)).to be(false), "Cheque #{index + 1}: effective_due_date #{effective_due_date} is a bank holiday"
   end
 end

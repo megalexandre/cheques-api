@@ -13,6 +13,7 @@ class ChequeCalculator
     {
       value: @value.to_d,
       due_date: @due_date,
+      effective_due_date:,
       processing_days: @processing_days,
       days_count:,
       total_interest: total_interest_percentage,
@@ -23,18 +24,27 @@ class ChequeCalculator
 
   private
 
-  def days_count
+  def effective_due_date
     target_date = @due_date + @processing_days
 
-    while weekend?(target_date)
+    # Pula finais de semana e feriados bancários
+    while weekend?(target_date) || bank_holiday?(target_date)
       target_date += 1
     end
 
-    (target_date - @exchange_date).to_i
+    target_date
+  end
+
+  def days_count
+    (effective_due_date - @exchange_date).to_i
   end
 
   def weekend?(date)
     date.saturday? || date.sunday?
+  end
+
+  def bank_holiday?(date)
+    BankHoliday.exists?(date: date)
   end
 
   def total_interest_percentage
