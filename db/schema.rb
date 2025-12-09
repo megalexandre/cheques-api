@@ -15,34 +15,28 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_07_185127) do
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
 
-  create_table "bank_holidays", force: :cascade do |t|
+  create_table "bank_holidays", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.date "date"
     t.datetime "updated_at", null: false
+    t.index ["date"], name: "index_bank_holidays_on_date", unique: true
   end
 
   create_table "borderos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.date "data_troca", null: false
-    t.decimal "juros_mensal", precision: 10, scale: 4, null: false
+    t.date "exchange_date", null: false
+    t.decimal "monthly_interest", precision: 10, scale: 4, null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cheques", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "bordero_id", null: false
     t.datetime "created_at", null: false
-    t.date "data_vencimento", null: false
-    t.integer "dias_compensacao", null: false
+    t.date "due_date", null: false
+    t.integer "processing_days", default: 0, null: false
     t.datetime "updated_at", null: false
-    t.decimal "valor_cheque", precision: 10, scale: 2, null: false
-    t.integer "valor_cheque_cents"
+    t.integer "value", default: 0, null: false
     t.index ["bordero_id"], name: "index_cheques_on_bordero_id"
-  end
-
-  create_table "holidays", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.date "date"
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "cheques", "borderos"
