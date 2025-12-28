@@ -3,18 +3,18 @@
 Funcionalidade: Borderô
 
   Contexto:
-    Dado que a data atual é "2025-11-26 12:00:00"
+    Dado que a data atual é "2025-10-01 00:00:00"
   
   Cenário: Calcular um borderô
     Quando eu enviar um POST para "/borderos/preview" com o JSON:
       """
         {
-            "exchange_date": "2025-11-27",
+            "exchange_date": "2026-01-01",
             "monthly_interest": 2.5,
             "cheques": [
                 {
                     "value": 5000.00,
-                    "due_date": "2026-01-13",
+                    "due_date": "2026-02-01",
                     "processing_days": 2
                 }
             ]
@@ -25,22 +25,21 @@ Funcionalidade: Borderô
     E a resposta JSON deve conter:
     """
     {
-        "exchange_date":"2025-11-27", 
-        "monthly_interest":"2.5",
-        "total_amount":"5000.0",
-        "cheques":
-        [
-            {
-                "value":"5000.0",
-                "due_date":"2026-01-13",
-                "effective_due_date":"2026-01-15",
-                "processing_days":2,
-                "days_count":49,
-                "total_interest":"4.08333",
-                "paid_for_exchange":"204.17",
-                "amount_to_receive":"4795.83"
-            }
-        ] 
+      "exchange_date": "2026-01-01",
+      "monthly_interest": "2.5",
+      "cheques": [
+          {
+              "value": "5000.0",
+              "due_date": "2026-02-01",
+              "effective_due_date": "2026-02-03",
+              "processing_days": 2,
+              "days_count": 33,
+              "total_interest": "2.75",
+              "paid_for_exchange": "137.5",
+              "amount_to_receive": "4862.5"
+          }
+      ],
+      "total_amount": "5000.0"
     }
     """
 
@@ -124,3 +123,4 @@ Funcionalidade: Borderô
         ] 
     }
     """
+
