@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://c8o0wcwkg0wgckkkswcsgk0w.85.31.230.47.sslip.io', 
+  apiUrl: 'https://calculacheque.online/cheques', 
   defaultauth: 'fackbackend',
   firebaseConfig: {
     apiKey: '',
