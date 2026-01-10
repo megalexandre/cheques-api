@@ -18,6 +18,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { LightboxModule } from 'ngx-lightbox';
 
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+
 // Load Icons
 import { defineElement } from "@lordicon/element";
 import lottie from 'lottie-web';
@@ -31,11 +33,13 @@ import { ToastsContainer } from './dashboards/dashboard/toasts-container.compone
 import { DashboardsModule } from "./dashboards/dashboards.module";
 import { AppsModule } from "./apps/apps.module";
 import { EcommerceModule } from "./ecommerce/ecommerce.module";
+import { PreviewComponent } from './preview/preview.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
+    PreviewComponent,
     ToastsContainer
   ],
   imports: [
@@ -56,7 +60,12 @@ import { EcommerceModule } from "./ecommerce/ecommerce.module";
     LightboxModule,
     DashboardsModule,
     AppsModule,
-    EcommerceModule
+    EcommerceModule,
+    NgxMaskDirective,
+    NgxMaskPipe
+  ],
+  providers: [
+    provideNgxMask()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
