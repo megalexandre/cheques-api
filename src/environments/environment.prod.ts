@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'API_URL', 
+  apiUrl: 'http://c8o0wcwkg0wgckkkswcsgk0w.85.31.230.47.sslip.io', 
   defaultauth: 'fackbackend',
   firebaseConfig: {
     apiKey: '',
