@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 permissions:
   contents: write
@@ -27,7 +27,7 @@ jobs:
 
       - name: Replace API URL in environment.prod.ts
         run: |
-          sed -i "s|API_URL |${{ vars.API_URL }}|g" src/environments/environment.prod.ts
+          sed -i "s|API_URL|${{ vars.API_URL }}|g" src/environments/environment.prod.ts
 
       - name: Build
         run: npm run build -- --configuration production --base-href /cheques-api/
@@ -35,4 +35,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/corporate
+          folder: dist/corporate/browser 
+          branch: gh-pages 
