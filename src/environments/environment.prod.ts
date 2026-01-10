@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'API_URL_PLACEHOLDER', 
+  apiUrl: 'API_URL', 
   defaultauth: 'fackbackend',
   firebaseConfig: {
     apiKey: '',
