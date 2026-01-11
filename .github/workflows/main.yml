@@ -30,7 +30,10 @@ jobs:
           sed -i "s|API_URL_PLACEHOLDER|${{ vars.API_URL }}|g" src/environments/environment.prod.ts
 
       - name: Build
-        run: npm run build -- --configuration production --base-href /cheques-api/
+        run: npm run build -- --configuration production --base-href /
+
+      - name: Create CNAME
+        run: echo "calculajuros.online" > dist/corporate/browser/CNAME
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
