@@ -35,6 +35,10 @@ jobs:
       - name: Create CNAME
         run: echo "calculajuros.online" > dist/corporate/browser/CNAME
 
+      - name: Prepare Files for GitHub Pages
+        run: |
+          cp dist/corporate/browser/index.html dist/corporate/browser/404.html
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
