@@ -50,7 +50,10 @@ Funcionalidade: Borderô
     """
 
 
-    Cenário: Calcular um borderô com data caindo em final de semana
+  Cenário: Calcular um borderô com data caindo em final de semana
+
+    o dia de compensação precisa ser em dias uteis!
+
     Quando eu enviar um POST para "/borderos/preview" com o JSON:
       """
         {
@@ -60,7 +63,7 @@ Funcionalidade: Borderô
                 {
                     "value": 3000.00,
                     "due_date": "2026-01-15",
-                    "processing_days": 2
+                    "processing_days": 0
                 }
             ]
         }
@@ -79,8 +82,8 @@ Funcionalidade: Borderô
                 "value":"3000.0",
                 "due_date":"2026-01-15",
                 "effective_due_date":"2026-01-19",
-                "processing_days":2,
-                "days_count":53,
+                "processing_days":0,
+                "days_count":51,
                 "total_interest":"4.41667",
                 "paid_for_exchange":"132.5",
                 "amount_to_receive":"2867.5"
@@ -89,7 +92,10 @@ Funcionalidade: Borderô
     }
     """
 
+
   Cenário: Calcular um borderô com data caindo em feriado
+
+    o dia de compensação precisa ser em dias uteis!
 
     Dado que "2026-01-19" é um feriado bancário
     Quando eu enviar um POST para "/borderos/preview" com o JSON:
@@ -131,9 +137,10 @@ Funcionalidade: Borderô
     """
 
 
-  Cenário: Calcular um borderô quando os dias de processamento caem em feriados/finais de semena
+  Cenário: Calcular um borderô quando há feriados entres os dias de processamento
 
-    os dias de procesamento precisam ser contados em dias úteis
+    o dia de vencimento precisa ser em dia util mas somente ele, 
+    os dias de processamento PRECISAM ser todos dias uteis!
 
     Dado que "2026-01-01" é um feriado bancário
     Quando eu enviar um POST para "/borderos/preview" com o JSON:
