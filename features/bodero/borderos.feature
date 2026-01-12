@@ -45,7 +45,8 @@ Funcionalidade: Borderô
               "amount_to_receive": "9733.33"
           }
       ],
-      "total_amount": "10000.0"
+      "total_paid": "10000.0",
+      "total_value": "9733.33"
     }
     """
 
@@ -75,18 +76,19 @@ Funcionalidade: Borderô
     {
         "exchange_date":"2025-11-27", 
         "monthly_interest":"2.5",
-        "total_amount":"3000.0",
+        "total_paid":"3000.0",
+        "total_value":"2877.5",
         "cheques":
         [
             {
                 "value":"3000.0",
                 "due_date":"2026-01-15",
-                "effective_due_date":"2026-01-19",
+                "effective_due_date":"2026-01-15",
                 "processing_days":0,
-                "days_count":51,
-                "total_interest":"4.41667",
-                "paid_for_exchange":"132.5",
-                "amount_to_receive":"2867.5"
+                "days_count":49,
+                "total_interest":"4.08333",
+                "paid_for_exchange":"122.5",
+                "amount_to_receive":"2877.5"
             }
         ] 
     }
@@ -119,7 +121,8 @@ Funcionalidade: Borderô
     {
         "exchange_date":"2025-11-27", 
         "monthly_interest":"2.5",
-        "total_amount":"3000.0",
+        "total_paid":"3000.0",
+        "total_value":"2865.0",
         "cheques":
         [
             {
@@ -164,7 +167,8 @@ Funcionalidade: Borderô
     {
         "exchange_date":"2026-01-01", 
         "monthly_interest":"2.5",
-        "total_amount":"1000.0",
+        "total_paid":"1000.0",
+        "total_value":"978.33",
         "cheques":
         [
             {
@@ -173,8 +177,8 @@ Funcionalidade: Borderô
                 "effective_due_date":"2026-01-27",
                 "processing_days":2,
                 "days_count":26,
-                "total_interest":"4.5",
-                "paid_for_exchange":"135.0",
+                "total_interest":"2.16667",
+                "paid_for_exchange":"21.67",
                 "amount_to_receive":"978.33"
             }
         ] 
