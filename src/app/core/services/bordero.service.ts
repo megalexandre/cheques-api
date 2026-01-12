@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { BorderoPreview, BorderoPreviewRequest, BorderoPreviewResponse } from '../models/bordero.model';
+import { BorderoPreviewRequest, BorderoPreviewResponse } from '../models/bordero.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +13,7 @@ export class BorderoService {
 
   constructor(private http: HttpClient) { }
 
-  calculatePreview(request: BorderoPreviewRequest): Observable<BorderoPreview> {
-    return this.http.post<BorderoPreviewResponse>(this.apiUrl, request).pipe(
-      map(response => new BorderoPreview(response))
-    );
+  calculatePreview(request: BorderoPreviewRequest): Observable<BorderoPreviewResponse> {
+    return this.http.post<BorderoPreviewResponse>(this.apiUrl, request);
   }
 }

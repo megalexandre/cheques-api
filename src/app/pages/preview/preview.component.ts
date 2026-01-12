@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BorderoPreviewRequest, BorderoPreviewResponse, emptyCheque } from '../../core/models/bordero.model';
 import { BorderoService } from '../../core/services/bordero.service';
-import { BorderoPreview, BorderoPreviewRequest, BorderoPreviewResponse, ChequeInput, emptyCheque } from '../../core/models/bordero.model';
 
 @Component({
   selector: 'app-preview',
@@ -16,7 +16,7 @@ export class PreviewComponent implements OnInit {
     cheques: []
   };
 
-  response: BorderoPreview | null = null;
+  response: BorderoPreviewResponse | null = null;
   
 
   constructor(private borderoService: BorderoService) { }

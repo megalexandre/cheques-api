@@ -86,21 +86,14 @@
                             </tr>
                         </tbody>
                         <tfoot>
-                                    
-
                              <tr>
-                                 <td colspan="6" class="text-end"><strong>Total em cheques:</strong></td>
-                                 <td colspan="2"><strong>{{ response.total_cheques_value | currency:'BRL' }}</strong></td>
-                             </tr>
-                              <tr>
-                                 <td colspan="6" class="text-end"><strong>Total a pagar:</strong></td>
-                                 <td colspan="2"><strong>{{ response.total_amount_to_receive | currency:'BRL' }}</strong></td>
+                                 <td colspan="2" class="text-end"><strong>Total em cheques:</strong></td>
+                                 <td><strong>{{ response.total_paid | currency:'BRL' }}</strong></td>
+                                <td colspan="3" class="text-end"><strong>Total a pagar:</strong></td>
+                                <td colspan="2"><strong>{{ response.total_value | currency:'BRL' }}</strong></td>
                              </tr>
                         </tfoot>
                     </table>
-                </div>
-                <div class="mt-3">
-                    <pre>{{ response | json }}</pre>
                 </div>
             </div>
         </div>
