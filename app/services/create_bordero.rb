@@ -5,8 +5,7 @@ class CreateBordero
 
   def call
     ActiveRecord::Base.transaction do
-      bordero = Bordero.create!(@bordero_params)
-      bordero
+      Bordero.create!(@bordero_params)
     end
   end
 end
