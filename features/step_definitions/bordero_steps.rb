@@ -25,3 +25,13 @@ Então('todos os cheques devem estar em dias úteis') do
     expect(BankHoliday.exists?(date: effective_due_date)).to be(false), "Cheque #{index + 1}: effective_due_date #{effective_due_date} is a bank holiday"
   end
 end
+
+Então('a tabela de borderôs deve conter o registro com:') do |table|
+  bordero = Bordero.last
+  expect(bordero).not_to be_nil
+
+  table.rows_hash.each do |field, expected_value|
+    actual_value = bordero.send(field).to_s
+    expect(actual_value).to eq(expected_value), "Expected #{field} to be #{expected_value}, got #{actual_value}"
+  end
+end

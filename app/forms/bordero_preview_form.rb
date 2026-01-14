@@ -50,6 +50,14 @@ class BorderoPreviewForm
     }
   end
 
+  def to_create
+    {
+      exchange_date: exchange_date,
+      monthly_interest: monthly_interest,
+      cheques_attributes: cheques.map(&:to_h)
+    }
+  end
+
   private
 
   def build_cheques(cheques_params)

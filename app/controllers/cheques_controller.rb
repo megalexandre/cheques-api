@@ -14,23 +14,23 @@ class ChequesController < ApplicationController
 
   # POST /cheques
   def create
-    @cheque = Cheque.new(cheque_params)
+    cheques = build_cheques
 
-    if @cheque.save
-      render json: @cheque, status: :created, location: @cheque
+    if valid_cheques?
+      Cheque.transaction do
+        cheques.each(&:save!)
+      end
+
+      render json: cheques, status: :created
+
     else
-      render json: @cheque.errors, status: :unprocessable_entity
+      errors = cheques.map.with_index do |cheque, index|
+        { index: index, errors: cheque.errors } unless cheque.valid?
+      end.compact
+        render json: { errors: errors }, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /cheques/1
-  def update
-    if @cheque.update(cheque_params)
-      render json: @cheque
-    else
-      render json: @cheque.errors, status: :unprocessable_entity
-    end
-  end
 
   # DELETE /cheques/1
   def destroy
@@ -38,12 +38,21 @@ class ChequesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def valid_cheques?
+        build_cheques.all?(&:valid?)
+    end
+
+    def build_cheques
+      params[:cheques].map do |cheque_data|
+        Cheque.new(cheque_data.permit(:bordero_id, :due_date, :processing_days, :amount))
+      end
+    end
+
+
     def set_cheque
       @cheque = Cheque.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def cheque_params
       params.require(:cheque).permit(:bordero_id, :due_date, :processing_days, :amount)
     end
