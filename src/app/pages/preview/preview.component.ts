@@ -31,6 +31,8 @@ export class PreviewComponent implements OnInit {
 
   removeCheque(index: number) {
     this.request.cheques.splice(index, 1);
+    this.calculate
+
   }
 
   calculate() {
