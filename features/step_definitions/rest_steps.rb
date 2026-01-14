@@ -5,6 +5,12 @@ Quando('eu enviar um POST para {string} com o JSON:') do |path, json_string|
   @json_response = json_response if last_response.content_type&.include?('application/json')
 end
 
+Quando('eu enviar um GET para {string}') do |path|
+  get path
+  @last_response = last_response
+  @json_response = json_response if last_response.content_type&.include?('application/json')
+end
+
 Então('a resposta deve ser {int}') do |status_code|
   expect(@last_response.status).to eq(status_code)
 end

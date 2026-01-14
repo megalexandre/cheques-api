@@ -28,7 +28,8 @@ class ChequeForm
     {
       value: value,
       due_date: due_date,
-      processing_days: processing_days
+      processing_days: processing_days,
+      status: "awaiting"
     }
   end
 

@@ -1,5 +1,5 @@
 class ChequesController < ApplicationController
-  before_action :set_cheque, only: %i[ show update destroy ]
+  before_action :set_cheque, only: %i[ show ]
 
   # GET /cheques
   def index
@@ -12,30 +12,6 @@ class ChequesController < ApplicationController
     render json: @cheque
   end
 
-  # POST /cheques
-  def create
-    cheques = build_cheques
-
-    if valid_cheques?
-      Cheque.transaction do
-        cheques.each(&:save!)
-      end
-
-      render json: cheques, status: :created
-
-    else
-      errors = cheques.map.with_index do |cheque, index|
-        { index: index, errors: cheque.errors } unless cheque.valid?
-      end.compact
-        render json: { errors: errors }, status: :unprocessable_entity
-    end
-  end
-
-
-  # DELETE /cheques/1
-  def destroy
-    @cheque.destroy!
-  end
 
   private
     def valid_cheques?
