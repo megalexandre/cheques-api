@@ -37,6 +37,9 @@ gem "rack-cors"
 
 gem "money-rails"
 
+# Prometheus client for metrics
+gem "prometheus-client"
+
 # Fix ambiguous gem warnings
 gem "drb", "~> 2.2.3"
 gem "irb", "~> 1.15"

@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   post "borderos" => "borderos#create", as: :create_bordero
 
   get "up" => "rails/health#show", as: :rails_health_check
+  # Prometheus metrics endpoint
+  get "/metrics" => "metrics#index"
 end

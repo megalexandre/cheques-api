@@ -31,3 +31,31 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+
+
+# Ignore project-local installed gems
+/vendor/bundle/
+
+# Node/Yarn/npm
+/node_modules/
+ yarn-error.log
+pnpm-debug.log
+
+# IDEs and editors
+/.vscode/
+/.idea/
+*.iml
+
+# Coverage and test outputs
+/coverage/
+
+# System files
+.DS_Store
+
+# Rails / debugging
+.byebug_history
+
+# Webpacker / frontend build outputs (if present)
+/public/packs/
+/public/packs-test/
+
