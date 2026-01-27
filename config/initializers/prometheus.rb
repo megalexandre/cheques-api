@@ -27,7 +27,7 @@ class PrometheusMiddleware
     HTTP_REQUESTS_TOTAL.increment(labels: { method: method, path: path }) rescue nil
     HTTP_REQUEST_DURATION_SECONDS.observe(duration, labels: { method: method, path: path }) rescue nil
 
-    [status, headers, response]
+    [ status, headers, response ]
   end
 end
 
