@@ -19,7 +19,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_13_000003) do
     t.datetime "created_at", null: false
     t.date "date"
     t.datetime "updated_at", null: false
-    t.index ["date"], name: "index_bank_holidays_on_date", unique: true
   end
 
   create_table "borderos", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

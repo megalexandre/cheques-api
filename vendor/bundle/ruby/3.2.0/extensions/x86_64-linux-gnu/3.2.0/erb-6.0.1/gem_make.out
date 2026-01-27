@@ -1,0 +1,19 @@
+current directory: /home/alex/Workspace/cheques-api/vendor/bundle/ruby/3.2.0/gems/erb-6.0.1/ext/erb/escape
+/usr/bin/ruby3.2 -I/usr/lib/ruby/vendor_ruby extconf.rb
+checking for rb_ext_ractor_safe() in ruby.h... yes
+creating Makefile
+
+current directory: /home/alex/Workspace/cheques-api/vendor/bundle/ruby/3.2.0/gems/erb-6.0.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260126-44895-kg4gre sitelibdir\=./.gem.20260126-44895-kg4gre clean
+
+current directory: /home/alex/Workspace/cheques-api/vendor/bundle/ruby/3.2.0/gems/erb-6.0.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260126-44895-kg4gre sitelibdir\=./.gem.20260126-44895-kg4gre
+compiling escape.c
+linking shared-object erb/escape.so
+
+current directory: /home/alex/Workspace/cheques-api/vendor/bundle/ruby/3.2.0/gems/erb-6.0.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260126-44895-kg4gre sitelibdir\=./.gem.20260126-44895-kg4gre install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20260126-44895-kg4gre/erb
+
+current directory: /home/alex/Workspace/cheques-api/vendor/bundle/ruby/3.2.0/gems/erb-6.0.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260126-44895-kg4gre sitelibdir\=./.gem.20260126-44895-kg4gre clean
